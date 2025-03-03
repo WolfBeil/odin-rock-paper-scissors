@@ -6,33 +6,56 @@ function getComputerChoice(choices) {
     switch (computerChoice) {
         case 0:
             console.log("Rock")
-            break;
+            return "Rock";
         case 1:
             console.log("Paper")
-            break;
-        default:
+            return "Paper";
+        case 2:
             console.log("Scissors")
-            break;
+            return "Scissors";
+        default:
+            console.log("Error")
+            return "Error";
     }
 }
 
 function getHumanChoice() {
-    let choice = prompt("Please type your choice: Rock, paper or scissors?").toLowerCase();
-    switch (choice) {
-        case "rock":
+    let humanChoice = prompt("Please type your choice: Rock, paper or scissors?").toLowerCase();
+    switch (humanChoice) {
+        case 'rock':
             console.log("Rock")
-            break;
+            return "Rock";
         case 'paper':
             console.log("Paper")
-            break;
+            return "Paper";
         case 'scissors':
             console.log("Scissors")
-            break;
+            return "Scissors";
         default:
             console.log("Please type a valid option")
-            break;
-    };
+            return "Please type a valid option";
+    }
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice(3);
+
+function playRound(humanChoice, computerChoice) {
+   if (humanChoice === computerChoice) {
+    console.log("It's a tie!")
+    return "Tie";
+   } else if (
+    (humanChoice === "Rock") && (computerChoice === "Scissors") ||
+    (humanChoice === "Paper") && (computerChoice === "Rock") ||
+    (humanChoice === "Scissors") && (computerChoice === "Paper") ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+        humanScore++;
+        return "Player wins";
+    }
+    else {
+    console.log("An error must have ocurred")
+    return "Error";
+   }
+}
+
+playRound(humanSelection, computerSelection)
