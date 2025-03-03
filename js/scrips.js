@@ -35,5 +35,16 @@ function getHumanChoice() {
     return question;
 }
 
-getHumanChoice();
-getComputerChoice(3);
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice(3);
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice) {
+        console.log("Tie!")
+    } else {
+        console.log("Shit");
+    }
+}
+
+playRound();
+
