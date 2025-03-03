@@ -41,7 +41,21 @@ let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice(3);
 
 function playRound(humanChoice, computerChoice) {
-
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie!")
+        return "Tie";
+       } else if (
+        (humanChoice === "Rock") && (computerChoice === "Scissors") ||
+        (humanChoice === "Paper") && (computerChoice === "Rock") ||
+        (humanChoice === "Scissors") && (computerChoice === "Paper") ) {
+            console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+            humanScore++;
+            return "Player wins";
+        }
+        else {
+        console.log("An error must have ocurred")
+        return "Error";
+       }
 }
 
 playRound(humanSelection, computerSelection)
