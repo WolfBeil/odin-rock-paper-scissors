@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let computerChoice;
 
 function getComputerChoice(choices) {
     let computerChoice = Math.floor(Math.random() * choices);
@@ -17,26 +18,25 @@ function getComputerChoice(choices) {
 }
 
 function getHumanChoice() {
-    let question = parseInt(prompt("Rock, Paper or Scissors? Type 1 for rock, 2 for paper, and 3 for scissors"));
-    switch (question) {
-        case 1:
+    let humanChoice = prompt("Please type your choice: Rock, paper or scissors?").toLowerCase();
+    switch (humanChoice) {
+        case "rock":
             console.log("Rock")
             break;
-        case 2:
+        case 'paper':
             console.log("Paper")
             break;
-        case 3:
+        case 'scissors':
             console.log("Scissors")
             break;
         default:
-            console.log("Please insert a valid option")
+            console.log("Please type a valid option")
             break;
     }
-    return question;
+    return humanChoice;
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice(3);
+getHumanChoice();
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice) {
