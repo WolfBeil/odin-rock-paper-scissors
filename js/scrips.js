@@ -42,7 +42,6 @@ let computerScore = 0;
 
 function playGame(rounds) {
 
-    for (let index = 0; index < rounds; index++) {
 
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice(3);
@@ -75,7 +74,7 @@ function playGame(rounds) {
         
         playRound(humanSelection, computerSelection);
 
-    }
+
 }
 
 playGame(5);
