@@ -1,16 +1,14 @@
 let humanScore = 0;
 let computerScore = 0;
 
-let computerSelection = getComputerChoice(3);
-
 const rock = document.querySelector(".rock");
-rock.addEventListener("click", () => playRound("Rock", computerSelection));
+rock.addEventListener("click", () => playRound("Rock"));
 
 const paper = document.querySelector(".paper");
-paper.addEventListener("click", () => playRound("Paper", computerSelection));
+paper.addEventListener("click", () => playRound("Paper"));
 
 const scissors = document.querySelector(".scissors");
-scissors.addEventListener("click", () => playRound("Scissors", computerSelection));
+scissors.addEventListener("click", () => playRound("Scissors"));
 
 
 function getComputerChoice(choices) {
@@ -33,10 +31,11 @@ function getComputerChoice(choices) {
 
 
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice(3);
     if (humanChoice === computerChoice) {
-        console.log(`You chose ${humanChoice}!`)
-        console.log("It's a tie!")
+        console.log(`You chose ${humanChoice}!`);
+        console.log("It's a tie!");
         console.log(`Player Score: ${humanScore} --- Computer Score: ${computerScore}`);
         return "Tie";
        } else if (
