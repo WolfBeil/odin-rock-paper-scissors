@@ -1,15 +1,29 @@
+let humanScore = 0;
+let computerScore = 0;
+
+let computerSelection = getComputerChoice(3);
+
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", () => playRound("Rock", computerSelection));
+
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", () => playRound("Paper", computerSelection));
+
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener("click", () => playRound("Scissors", computerSelection));
+
 
 function getComputerChoice(choices) {
     let computerChoice = Math.floor(Math.random() * choices);
     switch (computerChoice) {
         case 0:
-            console.log("Rock")
+            console.log("Computer chose Rock");
             return "Rock";
         case 1:
-            console.log("Paper")
+            console.log("Computer chose Paper");
             return "Paper";
         case 2:
-            console.log("Scissors")
+            console.log("Computer chose Scissors");
             return "Scissors";
         default:
             console.log("Error")
@@ -17,65 +31,37 @@ function getComputerChoice(choices) {
     }
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Please type your choice: Rock, paper or scissors?").toLowerCase();
-    switch (humanChoice) {
-        case 'rock':
-            console.log("Rock")
-            return "Rock";
-        case 'paper':
-            console.log("Paper")
-            return "Paper";
-        case 'scissors':
-            console.log("Scissors")
-            return "Scissors";
-        default:
-            console.log("Please type a valid option")
-            return "Please type a valid option";
-    }
-}
-
-let humanScore = 0;
-let computerScore = 0;
-
-// The rounds argument will dictate how many rounds will be played
-
-function playGame(rounds) {
 
 
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice(3);
-
-        function playRound(humanChoice, computerChoice) {
-            if (humanChoice === computerChoice) {
-                console.log("It's a tie!")
-                return "Tie";
-               } else if (
-                    (humanChoice === "Rock") && (computerChoice === "Scissors") ||
-                    (humanChoice === "Paper") && (computerChoice === "Rock") ||
-                    (humanChoice === "Scissors") && (computerChoice === "Paper") ) {
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-                    humanScore++;
-                    return "Player wins";
-                }
-                else if (
-                    (computerChoice === "Paper") && (humanChoice === "Rock") ||
-                    (computerChoice === "Rock") && (humanChoice === "Scissors") ||
-                    (computerChoice === "Scissors") && (humanChoice === "Paper") ) {
-                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-                    computerScore++;
-                    return "Player loses";
-                }
-                else {
-                    console.log("An error must have ocurred")
-                    return "Error";
-               }
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`You chose ${humanChoice}!`)
+        console.log("It's a tie!")
+        console.log(`Player Score: ${humanScore} --- Computer Score: ${computerScore}`);
+        return "Tie";
+       } else if (
+            (humanChoice === "Rock") && (computerChoice === "Scissors") ||
+            (humanChoice === "Paper") && (computerChoice === "Rock") ||
+            (humanChoice === "Scissors") && (computerChoice === "Paper") ) {
+                console.log(`You chose ${humanChoice}!`)
+                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                humanScore++;
+                console.log(`Player Score: ${humanScore} --- Computer Score: ${computerScore}`);
+            return "Player wins";
         }
-        
-        playRound(humanSelection, computerSelection);
-
-
+        else if (
+            (computerChoice === "Paper") && (humanChoice === "Rock") ||
+            (computerChoice === "Rock") && (humanChoice === "Scissors") ||
+            (computerChoice === "Scissors") && (humanChoice === "Paper") ) {
+                console.log(`You chose ${humanChoice}!`)
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore++;
+                console.log(`Player Score: ${humanScore} --- Computer Score: ${computerScore}`);
+            return "Player loses";
+        }
+    else {
+        console.log("An error must have ocurred");
+        return "Error";
+   }
 }
 
-playGame(5);
-console.log(`Player Score: ${humanScore} --- Computer Score: ${computerScore}`);
